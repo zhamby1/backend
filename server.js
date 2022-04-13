@@ -45,4 +45,4 @@ router.post("/songs", (req,res) => {
 
 app.use("/api",router)
 
-app.listen(3000)
+app.listen(process.env.PORT || 3000)

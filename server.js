@@ -43,6 +43,21 @@ router.post("/songs", (req,res) => {
     })
 })
 
+router.delete("/songs/:id",(req,res) =>{
+    Song.deleteOne({_id: req.params.id}, (err,result) =>{
+        if(err){
+            res.status(400).send(err)
+        }
+        else if(result.n === 0){
+            res.sendStatus(404)
+        }
+        else{
+            res.sendStatus(204)
+        }
+
+    })
+})
+
 app.use("/api",router)
 
 app.listen(process.env.PORT || 3000)
